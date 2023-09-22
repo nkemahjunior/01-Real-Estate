@@ -1,4 +1,4 @@
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {  RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import AppLayout from "./ui/header/AppLayout";
 import Error from "./ui/Error"
@@ -18,14 +18,9 @@ const router = createBrowserRouter([
 
     children:[
       {
-        index:<Navigate to = "signUp"/>
         
-      },
-
-      {
         path:"/home",
         element:<IndexPage/>,
-        
       },
       {
         path: '/home/rent',
@@ -38,11 +33,14 @@ const router = createBrowserRouter([
     ]
 
   },
+
   {
-    path:"signUp",
+    path:"/",
     element:<SignUp/>,
+    index: true,
     
   },
+
   {
     path:"/signUp/login",
     element:<LoginPage/>,

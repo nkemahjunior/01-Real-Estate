@@ -1,11 +1,17 @@
-import { useState } from "react";
-import { TbBuildingSkyscraper } from "react-icons/tb";
-import {  useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import { TbBuildingSkyscraper } from "react-icons/tb"
 import { useLogin } from "./useLogin";
-// 
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Spinner from "../../ui/Spinner";
+
+
 function Login() {
 
     const navigate = useNavigate();
+
+    const {register,handleSubmit,formState} = useForm()
+    const { errors } = formState;
 
     const {login,isLoading} = useLogin();
 
@@ -16,11 +22,10 @@ function Login() {
 
    
     function handleBackward(){
-        navigate("/signUp")
+        navigate("/")
     }
 
-    function handleSubmit(e){
-        e.preventDefault();
+    function onSubmit({email,password}){
         if (!email || !password) return;
     
         //since this is a mutate function it has access to the onSuccess,onError,onSettled state
@@ -36,54 +41,67 @@ function Login() {
         
 
     }
+
+
     return (
-       <div className=" relative top-[30dvh] 2xl:px-[30rem] space-y-10 " >
-
-            <div className="font-rubik text-indigo-950 font-bold text-2xl flex justify-center items-center">
-                <TbBuildingSkyscraper color='#1e1b4b'/>
-                Zeco estate 
-            </div>
+        <div>
+            <div className="border-solid border- border-red-600 mt-[20dvh] px-2 py-2 md:px-8 md:mt-[23dvh] lg:px-[10rem]">
+                
 
 
-        <div className=" shadow-sm shadow-indigo-900 ">
+                <div className="border-solid border- border-blue-950 bg-indigo-50 px-1 shadow-sm shadow-indigo-950 md:px-8 md:py-4">
 
-            <form onSubmit={handleSubmit} className=" bg-indigo-50">
-                <div className=" flex flex-col justify-center items-center">
+                    <div className="font-rubik text-indigo-950 font-bold text-2xl flex justify-center items-center mb-2 ">
+                    <TbBuildingSkyscraper color='#1e1b4b'/>
+                    Zeco estate 
+                    </div>
+                    <h1 className="text-center font-bold font-inter md:text-xl mb-[2rem] ">Login </h1>
 
-                    <div className="mb-4 flex flex-col 2xl:flex-row space-y-2 2xl:space-x-[1rem] mt-4">
+                    <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <label htmlFor="email">Email Address </label>
-                        <input type="email" className="border-2 border-solid  rounded-md 2xl:w-[20rem]" autoComplete="username"
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={isLoading}
-                        />
+
+                        <div className="flex flex-col md:flex-row">
+                            <label htmlFor="email" 
+                            className="font-inter font-bold mb-1 md:mr-[0.9rem]"
+                            >Email Address </label>
+
+                            <input type="email" className="border-2 border-solid  rounded-md md:w-[80%] md:mb-3" 
+                            {...register('email',{required:true})}
+                            aria-invalid={errors.email ? "true" : "false"}
+                            disabled = {isLoading}
+                            />
+                            {errors.email?.type === "required" && ( <p role="alert" className="font-inter text-red-600 ml-1">email is required</p> )}
+                        </div>
+
+                        <div className="flex flex-col md:flex-row ">
+                            <label htmlFor="password"
+                            className="font-inter font-bold mb-1 md:mr-[3rem]"
+                            >Password</label>
+
+                            <input type="password" className="border-2 border-solid rounded-md md:w-[80%]"
+                            {...register('password',{required:true,
+                            minLength:{
+                                value:8
+                            }
+                            })}
+                            
+                            aria-invalid={errors.password ? "true" : "false"}
+                            disabled = {isLoading}
+                            />  
+                            {errors.password?.type === "minLength"  && ( <p role="alert" className="font-inter text-red-600 ml-1">password should be above 6 characters</p> )}
+                        </div>
+
+                        <div className="flex justify-center items-center flex-col">
+                            <button className="text-white font-inter rounded-lg p-2 mt-4 mb-2 font-bold bg-indigo-800 w-[10rem] md:hover:bg-indigo-900
+                            md:w-[15rem]">{isLoading ? <Spinner/>:"Login"}</button>
+
+                            <div className="font-inter mt-2 ">Already have an account? <span onClick={handleBackward} className="text-indigo-800 hover:underline">Sign in here</span> </div>
+                        </div>
                         
-                    </div>
-
-                    <div className="flex flex-col 2xl:flex-row space-y-2 2xl:space-x-[3.5rem]">
-                        <label htmlFor="password">Password</label>
-
-                        <input type="password" className="border-2 border-solid  rounded-md 2xl:w-[20rem]" 
-                        onChange={(e) => setPassword(e.target.value)}
-                        disabled={isLoading}
-                        />
-                    </div>
+                    </form>
                 </div>
-
-                <div className="2xl:flex 2xl:justify-center 2xl:flex-col  2xl:items-center flex flex-col justify-center items-center">
-                    <button type="submit"  className=" w-[80%]  bg-indigo-800 text-white font-bold font-Inter text-center p-4 2xl:w-[27.8rem] rounded-md mt-4 hover:bg-indigo-900"
-                     disabled={isLoading}>
-
-                         Login
-                    </button>
-
-                    <div className="font-inter mt-4 ">Don&apos;t have an account? <span onClick={handleBackward}  className="text-indigo-800 hover:underline">SignUp here</span> </div>
-                </div>
-            </form>
+            </div>
         </div>
-
-        </div>
-
     )
 }
 

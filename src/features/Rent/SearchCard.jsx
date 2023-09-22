@@ -2,22 +2,17 @@ import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { MdOutlineForest } from "react-icons/md";
 import Spinner from "../../ui/Spinner";
-import { useNavigate } from "react-router-dom";
 
 
 
-function SearchCard({searchData,isLoading ,id}) {
 
-  const navigate = useNavigate();
+function SearchCard({searchData,isLoading }) {
+
+
 
   if(isLoading) return <Spinner/> 
   const {price,beds,bathRooms,area,name,image} = searchData;
 
-  function handleOpenDetails(){
-    console.log("ID = " + id)
-    navigate("/home/rent/details/:id");
-    
-  }
 
  
 

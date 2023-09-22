@@ -17,6 +17,7 @@ export async function signUp({ fullName, email, password,avatar }){
     return data;
 }
 
+
 export async function login({email,password}){
 
    const { data, error } = await supabase.auth.signInWithPassword({
@@ -47,4 +48,28 @@ export async function logout(){
     const { error } = await supabase.auth.signOut();
     if(error) throw new Error("log out failed" + error.message);
 
+}
+
+export async function createOwnerTable(){
+    const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      let metadata = user.user_metadata
+      let id = user.id
+
+      console.log(id,metadata.fullName)
+
+
+      const { data, error } = await supabase
+      .from('owner')
+      .insert([
+        { ownerID: id, ownerName: metadata.fullName },
+      ])
+      .select()
+    
+
+     return data;
+
+      
+      
 }

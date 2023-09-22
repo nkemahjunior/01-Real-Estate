@@ -6,8 +6,12 @@ import { useRentProperties } from "../../../features/Rent/useRentProperties";
 import Spinner from "../../Spinner";
 import CardMobile from "./CardMobile";
 import CardLarge from "./CardLarge";
+import { Link } from "react-router-dom";
+import { test } from "../../../services/apiAuth";
 
 function getWindowSize() {
+
+
   const { innerWidth, innerHeight } = window;
   return { innerWidth, innerHeight };
 }
@@ -34,17 +38,20 @@ function CardParent() {
 
   const mobileHomeData = rentData.filter((el) => el.id === 1);
   const largeScreenHomeData = rentData.filter((el) => el.id < 9);
+  
 
   return (
     <>
       {windowSize.innerWidth < 768 ? (
         <>
           <Title />
-          <CardMobile isLoading={isLoading} mobileData={mobileHomeData} />
+          <Link to ={`/home/rent/details/${mobileHomeData[0].id} `} >
+          <CardMobile isLoading={isLoading} mobileData={mobileHomeData} /></Link>
           <div className="mb-4 mx-4" >
             <Button />
           </div>
         </>
+
       ) : (
         <div className="max-w-[100%] mt-16 ">
           <h1 className="font-inter font-bold text-2xl px-4 2xl:p-6 mb-4 2xl:mx-6">
@@ -53,7 +60,8 @@ function CardParent() {
 
           <div className="grid grid-cols-3 gap-8 2xl:grid-cols-4 px-5 2xl:pt-2 2xl:px-12  ">
             {largeScreenHomeData.map((el) => (
-              <CardLarge key={el.id} LargeScreenData={el} isLoading={isLoading} />
+              <Link to ={`/home/rent/details/${el.id} `}  key={el.id} >
+              <CardLarge  LargeScreenData={el} isLoading={isLoading} /></Link>
             ))}
           </div>
           <div className="mb-4 mx-12">
