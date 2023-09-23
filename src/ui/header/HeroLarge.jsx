@@ -56,12 +56,12 @@ function HeroLarge() {
            </div>
         
             <div className="767:hidden relative h-[90%] 2xl:h-[100%]"  >
-             <img src="../../public/headerImage.jpg"  className="h-[100%]  w-[100%]  absolute" alt=""  />
+             <img src="../../headerpicture/headerImage.jpg"  className="h-[100%]  w-[100%]  absolute" alt=""  />
 
              <div className='bg-white w-[60%] lg:w-[55%] 2xl:w-[40%] 
               h-[75%] lg:h-[80%] 2xl:h-[85%] absolute rounded-lg overflow-hidden ml-4 mt-8'>
 
-                    <img src="../../public/e28.jpg"   alt="" className='h-[55%] 
+                    <img src="../../headerpicture/e28.jpg"   alt="" className='h-[55%] 
                     w-[100%]'  /> 
 
                     <div className='pl-4'>
@@ -95,7 +95,7 @@ function HeroLarge() {
 
              <div className='1535:hidden bg-white w-[30%]    absolute rounded-lg overflow-hidden ml-4 mt-8 right-10 h-[80%]'>
 
-                    <img src="../../public/eM20.jpg"   alt="" className='h-[55%] 
+                    <img src="../../headerpicture/eM20.jpg"   alt="" className='h-[55%] 
                     w-[100%]'  /> 
 
                     <div className='pl-4'>

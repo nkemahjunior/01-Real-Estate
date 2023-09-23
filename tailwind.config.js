@@ -21,6 +21,48 @@ export default {
         '767' : {'max':'767px'},
         '760' : '760',
         '1535' : {'max':'1535px'}
+      },
+
+      keyframes:{
+        slide:{
+          '0%':{transform : 'translateX(120rem)'},
+          '100%':{transform : 'translateX(0rem)'},
+        },
+        slideBack:{
+          'from':{transform : 'translateX(0rem)'},
+          'to':{transform : 'translateX(120rem)'},
+        },
+        expand:{
+          'from':{height : '0px',width: '0px',marginTop:'20dvh', marginLeft:'50%'},
+          'to' :{height:'95dvh', width: '100%'}
+        },
+        small:{
+          'from' : {height:'95dvh', width: '100%'},
+          'to' : {height : '1px',width: '1px',marginTop:'20dvh', marginLeft:'50%'}
+        },
+        slideBig:{
+          '0%':{transform : 'translateY(50rem)'},
+          '100%':{transform : 'translateY(0rem)'},
+        },
+        slideBackBig:{
+          'from':{transform : 'translateY(0rem)'},
+          'to':{transform : 'translateY(50rem)'},
+        },
+
+
+
+
+      },
+      
+
+      animation:{
+        slide:'slide 2s ease-in-out',
+        slideBack:'slideBack 2s ease-in-out',
+        expand:'expand 0.5s ease',
+        small:'small 0.5s ease',
+        slideBig:'slide 1s ease-in-out',
+        slideBackBig:'slideBack 1s ease-in-out',
+
       }
     },
   },
