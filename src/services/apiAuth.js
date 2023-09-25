@@ -1,3 +1,4 @@
+import supabaseUrl from "../constants/supabaseURL";
 import supabase from "./supabase";
 
 export async function signUp({ fullName, email, password,avatar }){
@@ -57,7 +58,7 @@ export async function createOwnerTable(){
       let metadata = user.user_metadata
       let id = user.id
 
-      console.log(id,metadata.fullName)
+      
 
 
       const { data, error } = await supabase
@@ -72,4 +73,57 @@ export async function createOwnerTable(){
 
       
       
+}
+
+
+export async function postPropertiesForRent(data){
+
+  console.log(data.picture[0].name)
+
+
+  
+  const interiorImageName = `${Math.random()}-${data.interiorPicture[0].name}`.replaceAll("/","")
+  const exteriorImageName = `${Math.random()}-${data.picture[0].name}`.replaceAll("/","")
+  
+  
+  
+  const exteriorUrl = `${supabaseUrl}/storage/v1/object/public/exterior/${exteriorImageName}`
+  const interiorUrl = `${supabaseUrl}/storage/v1/object/public/interio/${interiorImageName}`
+  
+
+
+const {  error:storageError } = await supabase.storage.from('interio').upload(interiorImageName, data.interiorPicture[0])
+
+
+
+
+const {  error:storageErrorExterior } = await supabase.storage.from('exterior').upload(exteriorImageName, data.picture[0])
+
+
+
+
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  // let metadata = user.user_metadata
+  let id = user.id
+  
+  const {  error } = await supabase
+  .from('PropertiesForRent')
+  .insert([
+    { price: data.price, name: data.fullName,location:data.location,propertyType:data.propertyType,beds:data.beds,bathRooms:data.bathrooms,area:data.area,image:exteriorUrl,description:data.description,interiorImage:interiorUrl,ownerID:id,rental_ID:data.rentID},
+  ])
+  .select()
+
+  if(error) throw new Error("could not post the properties " + error.message);
+
+  if (storageError) {
+    throw new Error("could not post interior picture " + storageError.message);
+  }
+  
+    if (storageErrorExterior) {
+      throw new Error("could not post exterior picture " + storageErrorExterior.message);
+    }
+
 }

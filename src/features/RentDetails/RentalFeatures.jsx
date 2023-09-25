@@ -11,6 +11,7 @@ function RentalFeatures({area,price}) {
     if(error) return <ErrorRent/>
 
     const {city,cooling,heating,laundry,parkingArea,yearBuilt,created_at} = data[0]
+    
 
     const listedDate = created_at.split("T")
 

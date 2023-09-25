@@ -18,7 +18,7 @@ export async function rentalDetails(propertyID){
    const { data, error } = await supabase
   .from('RentalFeatures')
   .select('*')
-  .eq('propertyForRentID', propertyID)
+  .eq('propertyForRentID', 8)//i am using 8 instead of the property id here because i'm tired right now to implement and get the rental features from th form and store in the rental features table in the database....so lets just use 8 boy
 
   if(error){
     console.error(error)

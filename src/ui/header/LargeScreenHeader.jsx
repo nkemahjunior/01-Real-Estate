@@ -16,7 +16,7 @@ function LargeScreenHeader() {
     
 
     return (
-    <nav className="flex justify-between   h-10 items-center py-8 px-2 bg-stone-50 border-2 border-solid  sticky top-0">
+    <nav className="flex justify-between   h-10 items-center py-8 px-2 bg-stone-50 border-2 border-solid  sticky top-0 z-50">
 
         <div className="flex  space-x-2 ">
             <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg text-indigo-950 font-bold flex justify-center items-center"><TbBuildingSkyscraper color='#1e1b4b'/> Zeco estate</div>
