@@ -2,10 +2,13 @@ import { useState } from "react"
 import { TbBuildingSkyscraper } from "react-icons/tb"
 import { openModal } from "../modalSlice"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { useLogout } from "../../features/Authtentication/useLogout"
 
 
 function MobileHeader() {
     const [show,setShow] = useState(false)
+    const {logout, isLoading} = useLogout();
 
     const dispatch = useDispatch()
     
@@ -32,7 +35,7 @@ function MobileHeader() {
             </div>
         </div>
         
-        <nav className={`rigth-0  h-[92dvh] w-[80%]  left-[5rem] bg-white
+        <nav className={`rigth-0  h-[92dvh] w-[80%]  left-[5rem] bg-stone-50
         mt-[-8rem] pt-[4rem] ${ show ===false ? 'hidden' : ""} 
         400:left-[7rem] 580:left-[9rem]  overflow-y-scroll z-20 fixed `} >
 
@@ -40,7 +43,9 @@ function MobileHeader() {
                 x
             </div>
 
-            <div className=" h-[92dvh] w-[100%]  top-0 space-y-8 ps-[2rem] pt-[8rem] 600:pr-[2rem]">
+            <div className=" h-[92dvh] w-[100%]  top-0 space-y-8 ps-[2rem] pt-[5rem] 600:pr-[2rem]">
+
+            <div className="capitalize font-Rubik text-2xl 600:text-end  " ><Link to = "/messages">messages</Link></div>
 
                 <div className=" capitalize font-Rubik text-2xl 600:text-end  cursor-pointer "
                 onClick={() => {
@@ -48,13 +53,15 @@ function MobileHeader() {
                 }}
                 >+ Add a property</div>
 
-                <div className="capitalize font-Rubik text-2xl 600:text-end  " >rent</div>
-                <div className="capitalize font-Rubik text-2xl 600:text-end">buy</div>
-                <div className="capitalize font-Rubik text-2xl 600:text-end">sell</div>
-                <div className="capitalize font-Rubik text-2xl 600:text-end">manage property</div>
+                <div className="capitalize font-Rubik text-2xl 600:text-end  " ><Link to="/myProperties">my properties</Link></div>
+                <div className="capitalize font-Rubik text-2xl 600:text-end  " ><Link to="/bookmarks">bookmarks</Link></div>
+                <div className="capitalize font-Rubik text-2xl 600:text-end  " ><Link to='/home/rent'>rent</Link></div>
+                <div className="capitalize font-Rubik text-2xl 600:text-end"><Link to='/home/rent'>buy</Link></div>
+    
+
                 <div className="capitalize font-Rubik text-2xl 600:text-end">resources</div>
-                <div className="capitalize font-Rubik text-2xl 600:text-end">login</div>
-                <div className="capitalize font-Rubik text-2xl 600:text-end">sign up</div>
+                <div onClick={logout} className="capitalize font-Rubik text-2xl 600:text-end">logout</div>
+
             </div>
         </nav>
         </div>

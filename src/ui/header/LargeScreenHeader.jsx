@@ -2,13 +2,23 @@
 
 
 import { TbBuildingSkyscraper } from 'react-icons/tb';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useLogout } from '../../features/Authtentication/useLogout';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../modalSlice';
+import { useDetectClickOutsideTarget } from '../../hooks/detectClickOutsideTarget';
+import { Link } from 'react-router-dom';
 
 function LargeScreenHeader() {
+
+    const [show, setShow] = useState(false)
     const {logout, isLoading} = useLogout();
+
+    
+    function handleShow(){
+        setShow((c) => !c)
+    }
     
 
     const dispatch = useDispatch();
@@ -21,15 +31,26 @@ function LargeScreenHeader() {
         <div className="flex  space-x-2 ">
             <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg text-indigo-950 font-bold flex justify-center items-center"><TbBuildingSkyscraper color='#1e1b4b'/> Zeco estate</div>
 
-            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer">rent</div>
+            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer"> <Link to='/home/rent'>rent</Link></div>
 
-            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer">buy</div>
+            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer"><Link to='/home/rent'>buy</Link></div>
 
-            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer">sell</div>
 
-            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer">manage property</div>
 
-            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer">resources</div>
+            <div className='relative' onClick={handleShow} >
+                <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg flex items-center cursor-pointer">manage property <RiArrowDropDownLine/></div>
+
+                <div className={`border-solid border-2  absolute 
+                ${show === true? "" :"hidden"} flex flex-col justify-center px-4 bg-stone-50 `}> 
+                    <div className="capitalize hover:text-indigo-400  font-Rubik  hover:rounded-lg cursor-pointer">
+                        <Link to="/myProperties">my properties</Link></div>
+
+                    <div className="capitalize hover:text-indigo-400  font-Rubik  hover:rounded-lg cursor-pointer">
+                        <Link to="/bookmarks">bookmarks</Link></div>
+                </div>
+            </div>
+
+            <div className="capitalize hover:text-indigo-400 p-[.2rem] hover:bg-indigo-100 font-Rubik  hover:rounded-lg cursor-pointer"><Link to = "/messages">messages</Link></div>
 
         </div>
 

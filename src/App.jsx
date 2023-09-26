@@ -10,6 +10,10 @@ import RentDetails from "./pages/RentDetails";
 import LoginPage from "./pages/LoginPage";
 import SignUp from "./features/Authtentication/SignUp"
 import ProtectedRoute from "./ui/ProtectedRoute";
+import MyProperties from "./pages/MyProperties";
+import BookmarkedPage from "./pages/BookmarkedPage";
+import MessagePage from "./pages/MessagePage";
+
 
 const router = createBrowserRouter([
   {
@@ -29,6 +33,18 @@ const router = createBrowserRouter([
       {
         path: '/home/rent/details/:propertyID',
         element: <RentDetails/>
+      },
+      {
+        path:"/myProperties",
+        element: <MyProperties/>
+      },
+      {
+        path:"/bookmarks",
+        element: <BookmarkedPage/>
+      },
+      {
+        path:"/messages",
+        element: <MessagePage/>
       },
     ]
 

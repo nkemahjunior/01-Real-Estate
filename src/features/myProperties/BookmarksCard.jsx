@@ -2,13 +2,16 @@ import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { BsBookmarkFill, BsBookmarkPlus } from "react-icons/bs";
 import { MdOutlineForest } from "react-icons/md";
-import Spinner from "../../ui/Spinner";
-import { useAddBookmarks } from "./useAddBookmarks";
-import { useEffect, useState } from "react";
-import { useDeleteBookmark } from "./useDeleteBookmarks";
-import { useSearchParams } from "react-router-dom";
 
-function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
+
+import { useEffect, useState } from "react";
+import { useDeleteBookmark } from "../Rent/useDeleteBookmarks";
+import { useAddBookmarks } from "../Rent/useAddBookmarks";
+import Spinner from "../../ui/Spinner";
+
+
+
+function BookmarksCard({ searchData, isLoading, id, bookmarkdata }) {
   
 
 
@@ -79,7 +82,7 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
               <span className="font-Roboto text-indigo-400">/month</span>
             </div>
 
-            <div onClick={handleClick} >
+            {/* <div onClick={handleClick} >
               {
                  isBookmark && <BsBookmarkFill style={{ fontSize: '2rem', color:'#6366f1'}} width={500}/>
               
@@ -89,7 +92,7 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
               }
 
 
-            </div>
+            </div> */}
           </div>
 
           <div className=" inline-block mt-2 font-bold font-Inter">{name}</div>
@@ -128,6 +131,6 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
   );
 }
 
-export default SearchCard;
+export default BookmarksCard;
 
 

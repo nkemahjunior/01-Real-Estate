@@ -11,7 +11,8 @@ export function useDetectClickOutsideTarget(handler,listenCapturing = true){
 
         function handleClick(e){
             if(ref.current && !ref.current.contains(e.target)){
-            dispatch(handler())
+           if(handler) dispatch(handler())
+          
 
             }
         }

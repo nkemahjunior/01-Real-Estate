@@ -8,7 +8,7 @@ import { createPortal } from "react-dom";
 
 function Modal() {
     
-    const {register,handleSubmit,formState} = useForm()
+    const {register,handleSubmit,reset,formState} = useForm()
     const { errors } = formState;
 
     const close_or_open = useSelector((state) => state.modal.open)
@@ -26,7 +26,11 @@ function Modal() {
     function onSubmit(data){
         console.log(data)
 
-        postProperties(data)
+        postProperties(data,{
+            onSuccess:(data) => {
+                reset();
+            }
+        })
     }
 
 
