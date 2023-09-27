@@ -9,8 +9,8 @@ const Error = lazy(() => import("./ui/Error"))
 const IndexPage = lazy(() => import("./pages/IndexPage"))
 const  RentPage = lazy(() => import("./pages/RentPage"))
 const  RentDetails = lazy(() => import("./pages/RentDetails"))
-const  LoginPage = lazy(() => import("./pages/LoginPage"))
-const  SignUp= lazy(() => import("./features/Authtentication/SignUp"))
+// const  LoginPage = lazy(() => import("./pages/LoginPage"))
+// const  SignUp= lazy(() => import("./features/Authtentication/SignUp"))
 const  MyProperties= lazy(() => import("./pages/MyProperties"))
 const  BookmarkedPage= lazy(() => import("./pages/BookmarkedPage"))
 const  MessagePage= lazy(() => import("./pages/MessagePage"))
@@ -21,8 +21,8 @@ const  MessageContent= lazy(() => import("./features/messages/MessageContent"))
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import RentDetails from "./pages/RentDetails";
-// import LoginPage from "./pages/LoginPage";
-// import SignUp from "./features/Authtentication/SignUp"
+import LoginPage from "./pages/LoginPage";
+import SignUp from "./features/Authtentication/SignUp"
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Spinner from "./ui/Spinner";
 // import MyProperties from "./pages/MyProperties";
