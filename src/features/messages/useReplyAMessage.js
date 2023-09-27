@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { replyAMessage, sendMessage } from "../../services/apiMessages";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 export function useReplyAMessage(){
@@ -19,10 +20,13 @@ export function useReplyAMessage(){
         onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ['reply'] })
             
-            // toast.success(
-            //   "Account successfully created! Please verufy the new account from the user's email address."
-            // );
+            toast.success(
+              "message sent."
+            );
           },
+          onError:(data)=>{
+            toast.error("could not send message,try again")
+          }
 
     });
 

@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addBookmark as addBookmarkApi } from "../../services/apiBookmarks";
+import toast from "react-hot-toast";
 
 export function useAddBookmarks(){
     const queryClient = useQueryClient();
@@ -10,9 +11,12 @@ export function useAddBookmarks(){
             queryClient.invalidateQueries({ queryKey: ['bookmarks'] })
             
             // toast.success(
-            //   "Account successfully created! Please verufy the new account from the user's email address."
+            //   "Bookmarks added."
             // );
           },
+          onError:(data)=>{
+            toast.error("could not be added to bookmarks,try again")
+          }
          
 
     });

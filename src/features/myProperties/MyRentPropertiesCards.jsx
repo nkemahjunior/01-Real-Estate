@@ -1,12 +1,8 @@
 import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
-import { BsBookmarkFill, BsBookmarkPlus } from "react-icons/bs";
+
 import { MdOutlineForest } from "react-icons/md";
 
-
-import { useEffect, useState } from "react";
-import { useDeleteBookmark } from "../Rent/useDeleteBookmarks";
-import { useAddBookmarks } from "../Rent/useAddBookmarks";
 import Spinner from "../../ui/Spinner";
 
 
@@ -15,53 +11,11 @@ function MyRentPropertiesCard({ searchData, isLoading, id, bookmarkdata }) {
   
 
 
-
-  const [isBookmark, setIsBookmark] = useState(false);
-  
- 
-  const {deleteBookmark} = useDeleteBookmark()
-
-  
-  
-
-  const { addBookmark } = useAddBookmarks();
-
-
-  useEffect(
-    function () {
-
-
-      bookmarkdata.forEach((el) =>{
-        //handleBookmark(false)
-        if(el.propertyID === id) {
-         setIsBookmark(true)
-
-        } 
-      
-
-
-      }
-      );
-    },
-    [bookmarkdata,id]
-  );
-
- 
-
   if (isLoading) return <Spinner />;
   const { price, beds, bathRooms, area, name, image } = searchData;
+ 
 
-  function handleClick(e) {
-    e.preventDefault();
-    if(isBookmark) {
-      deleteBookmark(id)
-      setIsBookmark(false)
-      //handleBookmark(false)
-    }
-    else
-    addBookmark(id);
-    
-  }
+
 
   return (
     <div>

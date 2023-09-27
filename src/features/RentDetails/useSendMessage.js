@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { sendMessage } from "../../services/apiMessages";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 export function useSendMessage(){
@@ -17,10 +18,13 @@ export function useSendMessage(){
         
         onSuccess: (data) => {
             
-            // toast.success(
-            //   "Account successfully created! Please verufy the new account from the user's email address."
-            // );
+            toast.success(
+              "message sent."
+            );
           },
+          onError:(data)=>{
+            toast.error("could not send message,try again")
+          }
 
     });
 

@@ -52,7 +52,7 @@ function Modal() {
                 ref={ref}
             >
                 <div className=" h-[100%] 
-                w-[100%] overflow-y-scroll px-2 pt-8  ">
+                w-[100%] overflow-y-scroll px-2 pt-8  pb-8">
 
                     <span className="  text-2xl cursor-pointer
                     border-2   border-solid border-black  p-2 ease-linear  ml-2  md:hover:bg-stone-600" 

@@ -19,11 +19,11 @@ export async function getOwnerOfProperty(id){
 
 
 
-  if(error) throw new Error("could not read property id " + error.message)
-  if(ownerError) throw new Error("could not read owner name  " + ownerError.message)
+  if(error) throw new Error("could not read property id " )
+  if(ownerError) throw new Error("could not read owner name  " )
 
 
-  return ownerData;
+  return ownerData
 }
 
 

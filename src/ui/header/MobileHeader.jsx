@@ -13,7 +13,7 @@ function MobileHeader() {
     const dispatch = useDispatch()
     
     function handleShow(){
-        console.log(show)
+    
         setShow((show) => !show)
     }
 
@@ -25,8 +25,8 @@ function MobileHeader() {
         <div className="flex justify-between   h-10 items-center py-8 px-2 bg-stone-50 border-2 border-solid  sticky top-0 ">
 
             <div className="font-rubik text-indigo-950 font-bold text-2xl flex justify-center items-center ">
-            <TbBuildingSkyscraper color='#1e1b4b'/>
-            Zeco estate 
+            <Link to ="/home"><TbBuildingSkyscraper color='#1e1b4b'/> </Link>
+            <Link to ="/home"> Zeco estate</Link>
             </div>
             <div className=" w-10 space-y-1 mt-1.5  " onClick={handleShow}>
                 <div className="bg-black h-1.5 "></div>
