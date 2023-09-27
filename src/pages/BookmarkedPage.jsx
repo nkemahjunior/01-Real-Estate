@@ -1,9 +1,10 @@
-import BookmarkedProperties from "../features/myProperties/bookmarkedProperties"
+import MyBookMarkProperties from "../features/myProperties/MyBookMarkProperties"
+
 
 function BookmarkedPage() {
     return (
         <div className="h-[98dvh]">
-            <BookmarkedProperties/>
+            <MyBookMarkProperties/>
         </div>
     )
 }
