@@ -87,7 +87,7 @@ function SignUp() {
 
                         <div className="flex justify-center items-center flex-col">
                             <button className="text-white font-inter rounded-lg p-2 mt-4 mb-2 font-bold bg-indigo-800 w-[10rem] md:hover:bg-indigo-900
-                            md:w-[15rem]">{isLoading ? <Spinner/>:"SignUp"}</button>
+                            md:w-[15rem]">{isLoading ? "Signing up...":"SignUp"}</button>
 
                             <div className="font-inter mt-2 ">Already have an account? <span onClick={handleForward} className="text-indigo-800 hover:underline">Sign in here</span> </div>
                         </div>

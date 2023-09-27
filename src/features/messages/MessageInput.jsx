@@ -1,11 +1,16 @@
 import { Send } from "@mui/icons-material"
 import { useForm } from "react-hook-form"
+import { useReplyAMessage } from "./useReplyAMessage"
+import Spinner from "../../ui/Spinner"
 
 function MessageInput() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
+
+    const {messageReply,isLoading} = useReplyAMessage()
+    if(isLoading) return <Spinner/>
 
     function onsubmit( data){
-        console.log(data)
+        messageReply(data,{onSuccess:(data) => reset() })
     }
 
     return (

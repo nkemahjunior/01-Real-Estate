@@ -93,9 +93,9 @@ function Login() {
 
                         <div className="flex justify-center items-center flex-col">
                             <button className="text-white font-inter rounded-lg p-2 mt-4 mb-2 font-bold bg-indigo-800 w-[10rem] md:hover:bg-indigo-900
-                            md:w-[15rem]">{isLoading ? <Spinner/>:"Login"}</button>
+                            md:w-[15rem]">{isLoading ? "Loging in.....":"Login"}</button>
 
-                            <div className="font-inter mt-2 ">Already have an account? <span onClick={handleBackward} className="text-indigo-800 hover:underline">Sign in here</span> </div>
+                            <div className="font-inter mt-2 ">Dont have an account? <span onClick={handleBackward} className="text-indigo-800 hover:underline">Sign up here</span> </div>
                         </div>
                         
                     </form>

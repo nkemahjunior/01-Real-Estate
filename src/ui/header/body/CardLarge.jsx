@@ -20,7 +20,7 @@ function CardLarge({LargeScreenData,isLoading }) {
       <div className=" px-4  md:px-0 rounded-lg    mt-8 md:mt-0">
         <div className=" rounded-lg overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
           <img
-            src={"image"}
+            src={image}
             alt=""
             className="h-[46%] 
                     w-[100%] "

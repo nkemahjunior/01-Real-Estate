@@ -238,7 +238,7 @@ function Modal() {
 
                             <div className="flex justify-center items-center flex-col mt-3">
                                 <button className="text-white font-inter rounded-lg p-2 mt-4 mb-2 font-bold bg-indigo-800 w-[10rem] md:hover:bg-indigo-900
-                                md:w-[15rem]">{/*{isLoading ? <Spinner/>:"SignUp"}*/}</button>
+                                md:w-[15rem]">{isLoading ? "Adding property..." :"Add a property"}</button>
 
 
                             </div>

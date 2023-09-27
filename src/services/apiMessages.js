@@ -28,7 +28,7 @@ export async function getOwnerOfProperty(id){
 
 
 export async function sendMessage(propertyID,message){
-    console.log(propertyID,message)
+   
 
     const {
         data: { user },
@@ -57,4 +57,81 @@ export async function sendMessage(propertyID,message){
     if(receiverError ) throw new Error("could not find the receiver " + error.message)
 
     
+}
+
+export async function getMessages(){
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  let metadata = user.user_metadata
+  let senderid = user.id
+
+  
+const  { data, error } = await supabase
+.from('messages')
+.select('*')
+.eq('receiverID',senderid)
+
+if(error) throw new Error("could not get messages " + error.message)
+
+return{data,error}
+
+}
+
+export async function getAllMessagesWithAPerson(personID){
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  let currentUserid = user.id
+
+  
+const  { data, error } = await supabase
+.from('messages')
+.select('*')
+.eq('receiverID',currentUserid)
+.eq('senderID',personID)
+
+
+if(error) throw new Error("could not get  all messages " + error.message)
+
+return{data,error}
+
+}
+
+export async function replyAMessage(receiverID,message){
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  let metadata = user.user_metadata
+  let senderid = user.id
+  
+  const { data, error } = await supabase
+  .from('messages')
+  .insert([
+  { senderID: senderid, message: message.message,receiverID:receiverID,senderName:metadata.fullName },
+  ])
+  .select()
+
+  if(error) throw new Error("could not send  your message " + error.message)
+
+  return {data,error}
+}
+
+export async function displayYourReplyToAMessage(receiverID){
+  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  let senderid = user.id
+
+  let { data, error } = await supabase
+  .from('messages')
+  .select('*')
+  .eq('senderID',senderid)
+  .eq('receiverID',receiverID)
+
+  if(error) throw new Error("could not get  your reply " + error.message)
+
+  return {data,error}
 }

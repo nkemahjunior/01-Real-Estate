@@ -1,9 +1,12 @@
-import Message from "../features/messages/Message"
+
+
+import Messages from "../features/messages/Messages"
+
 
 function MessagePage() {
     return (
         <div className="h-[98dvh]">
-            <Message/>
+            <Messages/>
         </div>
     )
 }

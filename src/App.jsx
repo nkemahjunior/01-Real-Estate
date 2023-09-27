@@ -13,6 +13,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import MyProperties from "./pages/MyProperties";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import MessagePage from "./pages/MessagePage";
+import MessageContent from "./features/messages/MessageContent";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:"/messages",
         element: <MessagePage/>
+      },
+      {
+        path:"/messages/content/:senderID",
+        element: <MessageContent/>
       },
     ]
 

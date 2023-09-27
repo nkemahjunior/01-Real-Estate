@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDeleteBookmark } from "./useDeleteBookmarks";
 import { useSearchParams } from "react-router-dom";
 
+
 function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
   
 
@@ -63,12 +64,12 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
   return (
     <div>
       <div className="  px-4md:px-0 rounded-lg    mt-8 md:mt-0">
-        <div className=" rounded-lg pl-4 overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
+        <div className=" rounded-lg  overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
           <img
-            src={""}
+            src={isLoading ? "../../headerpicture/placeHolder" : image}
             alt=""
             className="h-[46%] 
-                    w-[100%] "
+            w-[100%] "
           />
 
           <div className="flex justify-between items-center   pr-4">
@@ -129,5 +130,6 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
 }
 
 export default SearchCard;
+
 
 

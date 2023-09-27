@@ -12,7 +12,7 @@ import { useSendMessage } from "./useSendMessage";
 function PropertyOwner() {
     const [show,setShow] = useState(false);
 
-    const {register,handleSubmit,formState} = useForm()
+    const {register,handleSubmit,formState,reset} = useForm()
     const { errors } = formState;
 
     const {messageData,isLoading:messageIsLoading} = useSendMessage();
@@ -29,7 +29,7 @@ function PropertyOwner() {
 
     function onsubmit(message){
         
-        messageData(message)
+        messageData(message,{onSuccess:(data)=> {reset()}})
         
     }
 
