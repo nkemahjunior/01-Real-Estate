@@ -36,8 +36,12 @@ function CardParent() {
 
   if (isLoading) return <Spinner />;
 
-  const mobileHomeData = rentData.filter((el) => el.id === 1);
+
+  
+  
+  const mobileHomeData = rentData.filter((el,i) => i === 8);
   const largeScreenHomeData = rentData.filter((el) => el.id < 9);
+  console.log(mobileHomeData)
   
 
   return (
