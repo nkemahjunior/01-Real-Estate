@@ -47,7 +47,7 @@ function PropertyOwner() {
                     <div className="flex mt-2">
 
                         <div><img src="../../public/avatar1.jpg" alt="avatar" className="h-[4rem] w-[4rem] rounded-full"/></div>
-                        <div className="flex items-center justify-center font-bold">owner name</div>
+                        <div className="flex items-center justify-center font-bold">{data[0].ownerName}</div>
                     </div>
 
                     <div className="transition-all">

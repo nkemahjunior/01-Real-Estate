@@ -7,16 +7,16 @@ function DetailsPhotos({area, bathRooms, beds, image,interiorImage,isLoading}) {
    
     return (
         <div>
-
-            <div >
+ 
+            <div className="" >
                 <div className="flex  mt-4 flex-col md:flex-row md:gap-5 md:grid md:grid-cols-2">
-                    <div className=" rounded-lg overflow-hidden mb-2 md:mb-0 md:h-[70dvh]">
+                    <div className={`rounded-lg overflow-hidden mb-2 md:mb-0 h-[32dvh] phones:w-[90vw]  md:h-[70dvh] bg-stone-200 ${isLoading && 'animate-pulse'}`}>
 
                         <img src={image} alt="" className="h-[100%] w-[100%] rounded-lg"/>
 
                     </div>  
 
-                    <div className=" rounded-lg overflow-hidden mb-2 md:mb-0 md:h-[70dvh]">
+                    <div className={`rounded-lg overflow-hidden mb-2 md:mb-0 h-[32dvh] phones:w-[90vw] md:h-[70dvh] bg-stone-200 ${isLoading && 'animate-pulse'}`}>
 
                      <img src={interiorImage} alt="" className="h-[100%] w-[100%] rounded-lg"/>
 

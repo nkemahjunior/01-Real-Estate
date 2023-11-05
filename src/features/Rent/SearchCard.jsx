@@ -8,69 +8,52 @@ import { useEffect, useState } from "react";
 import { useDeleteBookmark } from "./useDeleteBookmarks";
 import { useSearchParams } from "react-router-dom";
 
-
 function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
-  
-
-
-
   const [isBookmark, setIsBookmark] = useState(false);
-  
- 
-  const {deleteBookmark} = useDeleteBookmark()
 
-  
-  
+  const { deleteBookmark } = useDeleteBookmark();
 
   const { addBookmark } = useAddBookmarks();
 
-
   useEffect(
     function () {
-
-
-      bookmarkdata.forEach((el) =>{
+      bookmarkdata.forEach((el) => {
         //handleBookmark(false)
-        if(el.propertyID === id) {
-         setIsBookmark(true)
-
-        } 
-      
-
-
-      }
-      );
+        if (el.propertyID === id) {
+          setIsBookmark(true);
+        }
+      });
     },
-    [bookmarkdata,id]
+    [bookmarkdata, id]
   );
-
- 
 
   if (isLoading) return <Spinner />;
   const { price, beds, bathRooms, area, name, image } = searchData;
 
   function handleClick(e) {
     e.preventDefault();
-    if(isBookmark) {
-      deleteBookmark(id)
-      setIsBookmark(false)
+    if (isBookmark) {
+      deleteBookmark(id);
+      setIsBookmark(false);
       //handleBookmark(false)
-    }
-    else
-    addBookmark(id);
-    
+    } else addBookmark(id);
   }
 
   return (
     <div>
-      <div className="  px-4md:px-0 rounded-lg    mt-8 md:mt-0">
-        <div className=" rounded-lg  overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
-          <img
-            src={isLoading ? "../../headerpicture/placeHolder" : image}
-            alt=""
-            className="h-[46%] 
-            w-[100%] "
-          />
+      <div className="  px-4md:px-0 rounded-lg    mt-8 md:mt-0  lg:w-[20rem] md:h-[22rem] lg:h-[25rem]">
+        <div className=" rounded-lg  overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%] space-y-2 h-full">
+          <div
+            className={` h-[48%] 
+                      w-[100%] bg-stone-200 ${isLoading && "animate-pulse"}`}
+          >
+            <img
+              src={image}
+              alt=""
+              className="h-full 
+              w-full "
+            />
+          </div>
 
           <div className="flex justify-between items-center   pr-4">
             <div>
@@ -80,16 +63,19 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
               <span className="font-Roboto text-indigo-400">/month</span>
             </div>
 
-            <div onClick={handleClick} >
-              {
-                 isBookmark && <BsBookmarkFill style={{ fontSize: '2rem', color:'#6366f1'}} width={500}/>
-              
-              }
-              {
-                 !isBookmark && <BsBookmarkPlus style={{ fontSize: '2rem', color:'#6366f1'}} width={500}/>
-              }
-
-
+            <div onClick={handleClick}>
+              {isBookmark && (
+                <BsBookmarkFill
+                  style={{ fontSize: "2rem", color: "#6366f1" }}
+                  width={500}
+                />
+              )}
+              {!isBookmark && (
+                <BsBookmarkPlus
+                  style={{ fontSize: "2rem", color: "#6366f1" }}
+                  width={500}
+                />
+              )}
             </div>
           </div>
 
@@ -130,6 +116,3 @@ function SearchCard({ searchData, isLoading, id, bookmarkdata }) {
 }
 
 export default SearchCard;
-
-
-

@@ -58,7 +58,7 @@ function CardParent() {
             Available Properties
           </h1>
 
-          <div className="grid grid-cols-3 gap-8 2xl:grid-cols-4 px-5 2xl:pt-2 2xl:px-12  ">
+          <div className="grid grid-cols-3 gap-8    xlplus:grid-cols-4 px-5 2xl:pt-2 2xl:px-12  ">
             {largeScreenHomeData.map((el) => (
               <Link to ={`/home/rent/details/${el.id} `}  key={el.id} >
               <CardLarge  LargeScreenData={el} isLoading={isLoading} /></Link>

@@ -62,7 +62,7 @@ return (
                 <div className="inline-block" >
 
                     <select  className="font-inter outline-none " onChange={ handlePriceChange }>
-                        <option value="500-1500">all prices</option>
+                        <option value="all">all prices</option>
                         <option value="500-700">$500 - $700</option>
                         <option value="700-1000">$700 - $1000</option>
                         <option value="1000-1500">$1000 - $1500 </option>

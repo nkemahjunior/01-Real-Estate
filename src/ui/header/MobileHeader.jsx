@@ -36,7 +36,7 @@ function MobileHeader() {
         </div>
         
         <nav className={`rigth-0  h-[92dvh] w-[80%]  left-[5rem] bg-stone-50
-        mt-[-8rem] pt-[4rem] ${ show ===false ? 'hidden' : ""} 
+        mt-[-8rem] pt-[4rem] ${ show ===false ? ' translate-x-[500%] transition-all duration-[0.6s]' : "translate-x-[0%] transition-all duration-[0.6s]"} 
         400:left-[7rem] 580:left-[9rem]  overflow-y-scroll z-20 fixed `} >
 
             <div onClick={handleShow} className= "text-4xl absolute p-1 z-[10] " >

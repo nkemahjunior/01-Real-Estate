@@ -14,14 +14,16 @@ function CardMobile({ mobileData,isLoading }) {
 
   return (
     <>
-      <div className=" px-4  md:px-0 rounded-lg    mt-8 md:mt-0">
-        <div className=" rounded-lg overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
-          <img
-            src={image}
-            alt=""
-            className="h-[46%] 
-              w-[100%] "
-          />
+      <div className=" px-4  md:px-0 rounded-lg    mt-8 md:mt-0 h-[22rem]">
+        <div className=" rounded-lg overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%] h-full">
+          <div className={`bg-stone-200 h-[48%] w-[100%] ${isLoading && 'animate-pulse'}`}>
+            <img
+              src={image}
+              alt=""
+              className="h-full 
+                w-full "
+            />
+          </div>
 
           <div className=" ">
             <span className="font-Roboto font-bold  inline-block text-indigo-500 mt-3">

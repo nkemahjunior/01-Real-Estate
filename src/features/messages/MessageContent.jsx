@@ -16,6 +16,10 @@ function MessageContent() {
     if(isLoading) return <Spinner/>
     if(isReplying) return <Spinner/>
 
+    console.log(data)
+    console.log(replyData)
+    
+
 
     const{data:allReceivedMessages} = data
     const{data:replyingData} = replyData

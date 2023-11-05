@@ -6,10 +6,19 @@ import SearchCard from "./SearchCard";
 import { useRentProperties } from "./useRentProperties";
 import { Link } from "react-router-dom";
 import { useCheckBookmarks } from "./useCheckBookmarks";
-import { useState } from "react";
+import { useEffect } from "react";
+import { supabase } from "@supabase/auth-ui-shared";
+
 
 
 function SearchResults() {
+
+    //  supabase
+    //     .channel('realtime')
+    //     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'PropertiesForRent' }, ()=>{console.log("hello")})
+    //     .subscribe()
+    
+       
 
    
     
@@ -20,11 +29,12 @@ function SearchResults() {
     if(isLoading) return <Spinner/>
     if(error) return <ErrorRent/>
 
-   
+    // console.log("COMPONENT")
+    // console.log(count)
   
     return (
         <>
-            <div className="md:grid md:grid-cols-3 md:gap-8 2xl:grid-cols-4 md:px-5 2xl:p-6 ">
+            <div className="md:grid md:grid-cols-3 md:gap-8 1380:grid  xlplus:grid-cols-4 md:px-5 2xl:p-6  ">
                 
                 {
                     rentData.map((el) => (

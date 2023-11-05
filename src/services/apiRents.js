@@ -3,12 +3,17 @@ import PAGE_SIZE from "../ui/PAGE_SIZE";
 
 
 
+
 export async function getProperties({page,sortPrice,properyName,searchValue}){
+
+
+  
+  
 
 
   let query = supabase
   .from('PropertiesForRent')
-  .select('*' , { count: "exact", });
+  .select('*' , { count: "exact"});
   
   //PAGINATION
   if (page) {
@@ -21,14 +26,18 @@ export async function getProperties({page,sortPrice,properyName,searchValue}){
 
   if(sortPrice  ) {
     
-    const[lowPrice,highPrice] = sortPrice
-    const toNumber1 = Number(lowPrice)
-    const toNumber2 = Number(highPrice)
-
-    
-     query.gte('price',toNumber1)
-     query.lte('price', toNumber2 )
-     query.order('price',{ascending: true})
+    if(sortPrice === "all"){
+      return query
+    }else{
+      const[lowPrice,highPrice] = sortPrice
+      const toNumber1 = Number(lowPrice)
+      const toNumber2 = Number(highPrice)
+  
+      
+       query.gte('price',toNumber1).lte('price', toNumber2 ).order('price',{ascending: true})
+      //  query.lte('price', toNumber2 )
+      //  query.order('price',{ascending: true})
+    }
   }
 
   if(properyName){
@@ -43,7 +52,7 @@ export async function getProperties({page,sortPrice,properyName,searchValue}){
 
 
   if(searchValue){
-    console.log(searchValue)
+    // console.log(searchValue)
     query.eq('name', searchValue)
   } 
   
@@ -54,6 +63,14 @@ if(error){
     console.error(error)
     throw new Error("properties could not be loaded")
 }
+
+// console.log("API")
+
+
+//   console.log(count)
+// console.log(data)
+
+
 
 return {data,count};
 

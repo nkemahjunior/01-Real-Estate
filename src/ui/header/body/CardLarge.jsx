@@ -17,14 +17,17 @@ function CardLarge({LargeScreenData,isLoading }) {
 
   return (
     <>
-      <div className=" px-4  md:px-0 rounded-lg    mt-8 md:mt-0">
-        <div className=" rounded-lg overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]">
+      <div className=" px-4  md:px-0 rounded-lg    mt-8 md:mt-0  lg:w-[20rem] md:h-[22rem] lg:h-[25rem]">
+        <div className="space-y-2 rounded-lg overflow-hidden bg-white shadow-md shadow-indigo-400 md:w-[100%]  h-full">
+          <div className={` h-[48%] 
+                      w-[100%] bg-stone-200 ${isLoading && 'animate-pulse'}`}>
           <img
-            src={image}
-            alt=""
-            className="h-[46%] 
-                    w-[100%] "
-          />
+               src={image}
+              alt=""
+              className="h-full
+                      w-full"
+            />
+          </div>
 
           <div className=" ">
             <span className="font-Roboto font-bold  inline-block text-indigo-500 mt-3">

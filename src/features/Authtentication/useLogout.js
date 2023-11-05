@@ -18,7 +18,7 @@ export function useLogout(){
         },
         onError: (err) => {
             
-            toast.error('There was a problem signing up...Try again');
+            toast.error('There was a problem Loging out...Try again');
         },
     })
 

@@ -24,7 +24,7 @@ function Modal() {
     //
     //data.interiorPicture[0].name
     function onSubmit(data){
-        console.log(data)
+       // console.log(data)
 
         postProperties(data,{
             onSuccess:(data) => {
@@ -41,9 +41,9 @@ function Modal() {
         
             <div className={`
             
-                ${close_or_open === false ? "hidden   transition  ease-out " : ""} 
+                ${close_or_open === false ?' translate-x-[500%] transition-all duration-[0.6s]' : "translate-x-[0%] transition-all duration-[0.6s]"} 
                 
-                h-[95dvh]  w-[100%]  md:w-[80%]  fixed  z-[55] modal
+                h-[38rem]  w-[100%]  md:w-[80%]  fixed  z-[55] modal
                  md:mx-[8rem] 
                 bg-stone-50 
                 
