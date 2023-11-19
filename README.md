@@ -1,4 +1,4 @@
 -real estate application where you can search for houses to rent, or post your property for rent 
--was built with react
+- built with react and supabase
 
 -https://zeco-estate.vercel.app/
